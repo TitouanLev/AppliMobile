@@ -9,7 +9,8 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 
-import org.w3c.dom.Text;
+import com.google.android.material.textfield.TextInputEditText;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,11 +19,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EditText text = findViewById(R.id.keywords);
+        TextInputEditText text = findViewById(R.id.keywords);
         Spinner foods = findViewById(R.id.foodTypes);
         SeekBar results = findViewById(R.id.resultsNumber);
         Button submit = findViewById(R.id.submit);
 
-        
+
     }
 }
