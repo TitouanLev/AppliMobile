@@ -46,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
         // API request
 
-        String URL = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2";
+        String API_KEY = "34b36018b4b34d719015a96804e28700";
+        String URL = "https://api.spoonacular.com/recipes/search?query=cheese&number=2&apiKey="+API_KEY;
 
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -67,9 +68,9 @@ public class MainActivity extends AppCompatActivity {
                         Log.e("API response (err)", error.toString());
                     }
                 }
-
-
         );
+
+        requestQueue.add(objectRequest);
 
 
     }
