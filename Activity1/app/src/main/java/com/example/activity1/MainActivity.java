@@ -22,6 +22,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Array;
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 String API_KEY = "34b36018b4b34d719015a96804e28700";
                 String URL = "https://api.spoonacular.com/recipes/search?query="+text.getText().toString().toLowerCase()+"&cuisine="+foods.getSelectedItem().toString().toLowerCase()+"&number="+results.getProgress()+"&apiKey=" + API_KEY;
                 Log.e("test",URL);
-                String JSONresponse = "";
+                final String JSONresponse = "";
 
                 JsonObjectRequest objectRequest = new JsonObjectRequest(
                         Request.Method.GET,
@@ -68,10 +70,38 @@ public class MainActivity extends AppCompatActivity {
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
-                                Log.e("API response", response.toString());
-                                Intent search = new Intent(getApplicationContext(), ActivitySearch.class);
-                                search.putExtra("JSONresponse",response.toString());
-                                startActivity(search);
+                                try {
+                                    JSONArray array = response.getJSONArray("results");
+                                    Intent search = new Intent(getApplicationContext(), ActivitySearch.class);
+                                    Log.e("test",array.toString());
+                                    for (int i=0;i<array.length();i++){
+                                        Bundle bundle = new Bundle();
+                                        JSONObject recipe = array.getJSONObject(i);
+                                        int id = recipe.getInt("id");
+                                        String title = recipe.getString("title");
+                                        int time = recipe.getInt("readyInMinutes");
+                                        int persons = recipe.getInt("servings");
+                                        String image = recipe.getString("image");
+                                        ArrayList<String> images = new ArrayList<>();
+                                        for (int j=0;j<recipe.getJSONArray("imageUrls").length();j++){
+                                            JSONArray tmp = recipe.getJSONArray("imageUrls");
+                                            images.add(j,tmp.getString(j));
+                                        }
+                                        bundle.putInt("id",id);
+                                        bundle.putString("title",title);
+                                        bundle.putInt("time",time);
+                                        bundle.putInt("persons",persons);
+                                        bundle.putString("image",image);
+                                        bundle.putStringArrayList("images",images);
+                                        search.putExtra("Response"+i+1,bundle);
+                                    }
+                                    search.putExtra("resultsNumber",results.getProgress());
+//                                    search.putExtra("JSONresponse",response.toString());
+                                    startActivity(search);
+                                    Log.e("test",response.toString());
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
                             }
                         },
                         new Response.ErrorListener() {

@@ -1,6 +1,6 @@
 package com.example.activity1;
 
-import java.lang.reflect.Array;
+import com.google.gson.annotations.SerializedName;
 
 public class Plat {
 
@@ -9,9 +9,5 @@ public class Plat {
     private int time;
     private int persons;
     private String image;
-
-    public Plat(String json){
-        String[] att = json.split(",");
-
-    }
+    private String[] images;
 }
