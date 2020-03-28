@@ -74,8 +74,7 @@ public class MainActivity extends AppCompatActivity {
                                     JSONArray array = response.getJSONArray("results");
                                     Intent search = new Intent(getApplicationContext(), ActivitySearch.class);
                                     Log.e("test",array.toString());
-                                    for (int i=0;i<array.length();i++){
-                                        Bundle bundle = new Bundle();
+                                    for (int i=0;i<array.length();i++) {
                                         JSONObject recipe = array.getJSONObject(i);
                                         int id = recipe.getInt("id");
                                         String title = recipe.getString("title");
@@ -87,13 +86,8 @@ public class MainActivity extends AppCompatActivity {
                                             JSONArray tmp = recipe.getJSONArray("imageUrls");
                                             images.add(j,tmp.getString(j));
                                         }
-                                        bundle.putInt("id",id);
-                                        bundle.putString("title",title);
-                                        bundle.putInt("time",time);
-                                        bundle.putInt("persons",persons);
-                                        bundle.putString("image",image);
-                                        bundle.putStringArrayList("images",images);
-                                        search.putExtra("Response"+i+1,bundle);
+                                        Plat p = new Plat(id, title, time, persons, image, images);
+                                        search.putExtra("Response"+i+1,p);
                                     }
                                     search.putExtra("resultsNumber",results.getProgress());
 //                                    search.putExtra("JSONresponse",response.toString());
