@@ -1,54 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity3">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headlayout"
+        android:layout_width="374dp"
+        android:layout_height="320dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="19dp"
+        app:layout_constraintBottom_toTopOf="@+id/info_desc"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RecetteTitle"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/info_ingredient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ingrédients"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/TimeLayout"
+            android:layout_width="140dp"
+            android:layout_height="93dp"
+            android:layout_marginStart="27dp"
+            android:layout_marginLeft="27dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/info_ingredient"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/info_layout_image">
+
+            <TextView
+                android:id="@+id/info_time"
+                android:layout_width="130dp"
+                android:layout_height="38dp"
+                android:gravity="center"
+                android:text="140 min"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/info_logo_time"
+                android:layout_width="67dp"
+                android:layout_height="51dp"
+                android:src="@drawable/time"
+                app:layout_constraintBottom_toTopOf="@+id/info_time"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/PersonLayout"
+            android:layout_width="142dp"
+            android:layout_height="82dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/TimeLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/info_layout_image"
+            app:layout_constraintTop_toTopOf="@+id/info_layout_image"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                android:id="@+id/info_person"
+                android:layout_width="85dp"
+                android:layout_height="33dp"
+                android:gravity="center"
+                android:text="2"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/info_logo_person"
+                android:layout_width="85dp"
+                android:layout_height="70dp"
+                android:src="@drawable/person"
+                app:layout_constraintBottom_toTopOf="@+id/info_person"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/info_layout_image"
+            android:layout_width="232dp"
+            android:layout_height="280dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/info_image"
+                android:layout_width="231dp"
+                android:layout_height="231dp"
+                android:src="@android:drawable/ic_dialog_alert"
+                app:layout_constraintBottom_toTopOf="@+id/info_image_suiv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/info_image_suiv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Suivante"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/info_image_prec" />
+
+            <Button
+                android:id="@+id/info_image_prec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Précédente"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/RecetteDesc"
-        android:layout_width="401dp"
-        android:layout_height="165dp"
-        android:layout_marginBottom="270dp"
-        android:text="Recette"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/info_title"
+        android:layout_width="391dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        android:capitalize="none"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="Pizza à l'ananas"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:typeface="serif"
+        app:layout_constraintBottom_toTopOf="@+id/headlayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/RecetteTitle"
-        android:layout_width="129dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="32dp"
-        android:text="Titre"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/retour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="4dp"
+    <ListView
+        android:id="@+id/info_desc"
+        android:layout_width="368dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="18dp"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_revert" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headlayout" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

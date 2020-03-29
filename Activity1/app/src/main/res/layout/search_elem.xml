@@ -35,7 +35,6 @@
                 android:id="@+id/searh_elem_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:text="12 minute - 8 pers"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
