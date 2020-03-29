@@ -33,7 +33,7 @@ public class ActivitySearch extends AppCompatActivity {
         ArrayList<Plat> plats = new ArrayList<>();
         for (int i=0;i<data.getInt("resultsNumber");i++){
             Plat p = getIntent().getParcelableExtra("Response"+i+1);
-            Log.e("test",p.toString());
+//            Log.e("test",p.toString());
             plats.add(p);
         }
 

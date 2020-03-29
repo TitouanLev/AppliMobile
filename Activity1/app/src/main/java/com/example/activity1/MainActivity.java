@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                                     Intent search = new Intent(getApplicationContext(), ActivitySearch.class);
                                     Log.e("test",array.toString());
                                     for (int i=0;i<array.length();i++) {
-                                        JSONObject recipe = array.getJSONObject(i);
+                                        JSONObject recipe = array.getJSONObject(i); //recette
                                         int id = recipe.getInt("id");
                                         String title = recipe.getString("title");
                                         int time = recipe.getInt("readyInMinutes");
@@ -108,7 +108,8 @@ public class MainActivity extends AppCompatActivity {
                                         Plat p = new Plat(id, title, time, persons, image, images);
                                         search.putExtra("Response"+i+1,p);
                                     }
-                                    search.putExtra("resultsNumber",results.getProgress());
+                                    int receivedResults = response.getInt("totalResults");
+                                    search.putExtra("resultsNumber", receivedResults);
 //                                    search.putExtra("JSONresponse",response.toString());
                                     startActivity(search);
                                     Log.e("test",response.toString());
